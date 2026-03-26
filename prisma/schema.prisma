@@ -1,0 +1,16 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "binary"
+}
+model UserLanguage {
+  id        Int    @id @default(autoincrement())
+  name      String
+  email     String @unique
+  languages String // store as CSV like "English,French"
+  age       Int
+}
